@@ -1,6 +1,9 @@
 package christmas.view;
 
 import christmas.util.Validator;
+import christmas.util.Utility;
+
+import java.util.Map;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -15,5 +18,19 @@ public class InputView {
             return readDate();
         }
         return Integer.parseInt(input);
+    }
+
+    public static Map<String, Integer> readOrder() {
+        System.out.println("주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)");
+        String input = Console.readLine();
+        Map<String, Integer> order;
+        try {
+            Validator.validateOrder(input);
+            order = Utility.orderParser(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return readOrder();
+        }
+        return order;
     }
 }
