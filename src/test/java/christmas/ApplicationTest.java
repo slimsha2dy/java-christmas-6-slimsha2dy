@@ -47,6 +47,26 @@ class ApplicationTest extends NsTest {
             runException("3", "제로콜라-a");
             assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
         });
+        assertSimpleTest(() -> {
+            runException("3", "양송이수프-1,제로콜라-1,양송이수프-2");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+    }
+
+    @Test
+    void 주문_예외_테스트_2() {
+        assertSimpleTest(() -> {
+            runException("3", "제로콜라-1,멸치탕후루-1");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+        assertSimpleTest(() -> {
+            runException("3", "제로콜라-1,샴페인-1");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
+        assertSimpleTest(() -> {
+            runException("3", "양송이수프-1,제로콜라-0");
+            assertThat(output()).contains("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        });
     }
 
     @Override
