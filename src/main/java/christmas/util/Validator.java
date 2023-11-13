@@ -2,6 +2,9 @@ package christmas.util;
 
 import christmas.util.ErrorMessage;
 
+import java.util.Map;
+import java.util.List;
+
 public class Validator {
     public static void validateDate(String input) {
         if (input.isEmpty()) {
@@ -32,6 +35,49 @@ public class Validator {
                 throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR.get());
             }
         }
+    }
+
+    public static boolean validateMenu(Map<String, Integer> userOrder, List<Map<String, Integer>> menu) {
+        int[] countCategory = new int[4];
+        for (Map.Entry<String, Integer> entry : userOrder.entrySet()) {
+            if (entry.getValue() <= 0) {
+                return true;
+            }
+            int category = getCategory(entry.getKey(), menu);
+            if (category == Constant.NOT_IN_MENU.get()) {
+                return true;
+            }
+            countCategory[category] += entry.getValue();
+        }
+        if (validateCount(countCategory)) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean validateCount(int[] countCategory) {
+        // 음료만 시킨 경우 예외 처리
+        if (countCategory[Constant.EPPETIZER.get()] == 0
+                && countCategory[Constant.MAINMENU.get()] == 0 && countCategory[Constant.DESSERT.get()] == 0) {
+            return true;
+        }
+        int totalCount = 0;
+        for (int count : countCategory) {
+            totalCount += count;
+        }
+        if (totalCount > 20) {
+            return true;
+        }
+        return false;
+    }
+
+    private static int getCategory(String food, List<Map<String, Integer>> menu) {
+        for (int category = Constant.EPPETIZER.get(); category <= Constant.BEVERAGE.get(); ++category) {
+            if (menu.get(category).containsKey(food)) {
+                return category;
+            }
+        }
+        return Constant.NOT_IN_MENU.get();
     }
 
     private static boolean validateFormat(String input) {
