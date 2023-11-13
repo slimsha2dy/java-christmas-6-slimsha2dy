@@ -4,8 +4,7 @@ import java.util.Map;
 
 import christmas.util.Utility;
 import christmas.util.Validator;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
