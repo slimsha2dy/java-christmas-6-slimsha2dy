@@ -20,6 +20,13 @@ public class MainController {
         OutputView.printOrder(orderMenu.getUserOrder());
         int totalPrice = orderMenu.getTotalPrice();
         OutputView.printTotalPrice(totalPrice);
+        OutputView.printPresent(totalPrice);
+        benefitControl(totalPrice);
+    }
+
+    private void benefitControl(int totalPrice) {
+        Benefit benefit = new Benefit(orderMenu.getOrderDate(), orderMenu.getCategoryCount(), totalPrice);
+        OutputView.printBenefits(benefit.getBenefits());
     }
 
     private void setReadOrder() {

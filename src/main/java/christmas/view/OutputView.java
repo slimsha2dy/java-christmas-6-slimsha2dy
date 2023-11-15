@@ -24,5 +24,31 @@ public class OutputView {
         System.out.println("<할인 전 총주문 금액>");
         String formattedNumber = decimalFormat.format(totalPrice);
         System.out.println(formattedNumber + "원");
+        System.out.println();
+    }
+
+    public static void printPresent(int totalPrice) {
+        System.out.println("<증정 메뉴>");
+        if (totalPrice < 120000) {
+            System.out.println("없음");
+            return;
+        }
+        System.out.println("샴페인 1개");
+        System.out.println();
+    }
+
+    public static void printBenefits(Map<String, Integer> benefits) {
+        System.out.println("<혜택 내역>");
+        if (benefits.isEmpty()) {
+            System.out.println("없음");
+            return;
+        }
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        for (Map.Entry<String, Integer> entry : benefits.entrySet()) {
+            System.out.print(entry.getKey() + ": -");
+            String fomattedNumber = decimalFormat.format(entry.getValue());
+            System.out.println(fomattedNumber + "원");
+        }
+        System.out.println();
     }
 }

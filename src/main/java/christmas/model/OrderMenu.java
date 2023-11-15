@@ -44,6 +44,15 @@ public class OrderMenu {
         return totalPrice;
     }
 
+    public int[] getCategoryCount() {
+        int[] categoryCount = new int[4];
+        for (Map.Entry<String, Integer> entry : this.userOrder.entrySet()) {
+            int category = Utility.getCategory(entry.getKey(), menu);
+            categoryCount[category] += entry.getValue();
+        }
+        return categoryCount;
+    }
+
     public void setOrderDate(int date) {
         this.orderDate = date;
     }
