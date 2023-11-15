@@ -7,9 +7,7 @@ import christmas.util.Validator;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.List;
-import java.util.ArrayList;
 
 public class OrderMenu {
     private final List<Map<String, Integer>> menu;

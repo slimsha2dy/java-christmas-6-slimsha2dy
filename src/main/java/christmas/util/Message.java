@@ -14,7 +14,8 @@ public enum Message {
     PRICE_FORMAT("#,###"),
     WON("원"),
     COUNT("개"),
-    NOTHING("없음");
+    NOTHING("없음"),
+    ONE_CHAMPAIGN("샴페인 1개");
 
     private final String value;
 

@@ -36,7 +36,7 @@ public class OutputView {
             System.out.println();
             return;
         }
-        System.out.println("샴페인 1개");
+        System.out.println(Message.ONE_CHAMPAIGN.get());
         System.out.println();
     }
 
