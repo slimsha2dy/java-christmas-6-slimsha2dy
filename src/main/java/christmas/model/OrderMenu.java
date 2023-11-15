@@ -19,9 +19,13 @@ public class OrderMenu {
 
     public OrderMenu() {
         menu = new ArrayList<>(List.of(
+                // EPPETIZER 0
                 Map.of("양송이수프", 6000, "타파스", 5500, "시저샐러드", 8000),
+                // MAINMENU 1
                 Map.of("티본스테이크", 55000, "바비큐립", 54000, "해산물파스타", 35000, "크리스마스파스타", 25000),
+                // DESSERT 2
                 Map.of("초코케이크", 15000, "아이스크림", 5000),
+                // BEVERAGE 3
                 Map.of("제로콜라", 3000, "레드와인", 60000, "샴페인", 25000)
         ));
     }
@@ -35,7 +39,7 @@ public class OrderMenu {
     }
 
     public int getTotalPrice() {
-        int totalPrice = 0;
+        int totalPrice = Constant.ZERO.get();
         for (Map.Entry<String, Integer> entry : this.userOrder.entrySet()) {
             int category = Utility.getCategory(entry.getKey(), menu);
             int price = menu.get(category).get(entry.getKey());
@@ -45,7 +49,7 @@ public class OrderMenu {
     }
 
     public int[] getCategoryCount() {
-        int[] categoryCount = new int[4];
+        int[] categoryCount = new int[Constant.CATEGORY_COUNT.get()];
         for (Map.Entry<String, Integer> entry : this.userOrder.entrySet()) {
             int category = Utility.getCategory(entry.getKey(), menu);
             categoryCount[category] += entry.getValue();

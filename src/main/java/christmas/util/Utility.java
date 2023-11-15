@@ -7,13 +7,14 @@ import java.util.Map;
 public class Utility {
     public static Map<String, Integer> orderParser(String input) {
         Map<String, Integer> order = new HashMap<String, Integer>();
-        String[] splittedComma = input.split(",");
+        String[] splittedComma = input.split(Message.COMMA.get());
         for (String string : splittedComma) {
-            String[] splittedHyphen = string.split("-");
-            if (order.containsKey(splittedHyphen[0])) {
+            String[] splittedHyphen = string.split(Message.HYPHEN.get());
+            if (order.containsKey(splittedHyphen[Constant.KEY_INDEX.get()])) {
                 throw new IllegalArgumentException(ErrorMessage.ORDER_ERROR.get());
             }
-            order.put(splittedHyphen[0], Integer.parseInt(splittedHyphen[1]));
+            order.put(splittedHyphen[Constant.KEY_INDEX.get()]
+                    , Integer.parseInt(splittedHyphen[Constant.VALUE_INDEX.get()]));
         }
         return order;
     }
