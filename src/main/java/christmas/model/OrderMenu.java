@@ -25,6 +25,14 @@ public class OrderMenu {
         ));
     }
 
+    public int getOrderDate() {
+        return this.orderDate;
+    }
+
+    public Map<String, Integer> getUserOrder() {
+        return this.userOrder;
+    }
+
     public void setOrderDate(int date) {
         this.orderDate = date;
     }

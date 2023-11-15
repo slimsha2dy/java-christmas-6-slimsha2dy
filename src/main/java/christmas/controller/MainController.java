@@ -15,6 +15,9 @@ public class MainController {
     public void run() {
         orderMenu.setOrderDate(InputView.readDate());
         setReadOrder();
+
+        OutputView.printPreview(orderMenu.getOrderDate());
+        OutputView.printOrder(orderMenu.getUserOrder());
     }
 
     private void setReadOrder() {
