@@ -18,6 +18,8 @@ public class MainController {
 
         OutputView.printPreview(orderMenu.getOrderDate());
         OutputView.printOrder(orderMenu.getUserOrder());
+        int totalPrice = orderMenu.getTotalPrice();
+        OutputView.printTotalPrice(totalPrice);
     }
 
     private void setReadOrder() {

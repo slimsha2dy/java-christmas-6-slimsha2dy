@@ -1,6 +1,7 @@
 package christmas.util;
 
 import christmas.util.ErrorMessage;
+import christmas.util.Utility;
 
 import java.util.Map;
 import java.util.List;
@@ -43,7 +44,7 @@ public class Validator {
             if (entry.getValue() <= 0) {
                 return true;
             }
-            int category = getCategory(entry.getKey(), menu);
+            int category = Utility.getCategory(entry.getKey(), menu);
             if (category == Constant.NOT_IN_MENU.get()) {
                 return true;
             }
@@ -69,15 +70,6 @@ public class Validator {
             return true;
         }
         return false;
-    }
-
-    private static int getCategory(String food, List<Map<String, Integer>> menu) {
-        for (int category = Constant.EPPETIZER.get(); category <= Constant.BEVERAGE.get(); ++category) {
-            if (menu.get(category).containsKey(food)) {
-                return category;
-            }
-        }
-        return Constant.NOT_IN_MENU.get();
     }
 
     private static boolean validateFormat(String input) {

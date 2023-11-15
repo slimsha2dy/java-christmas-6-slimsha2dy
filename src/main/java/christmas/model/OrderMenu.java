@@ -2,6 +2,7 @@ package christmas.model;
 
 import christmas.util.Constant;
 import christmas.util.ErrorMessage;
+import christmas.util.Utility;
 import christmas.util.Validator;
 
 import java.util.ArrayList;
@@ -31,6 +32,16 @@ public class OrderMenu {
 
     public Map<String, Integer> getUserOrder() {
         return this.userOrder;
+    }
+
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (Map.Entry<String, Integer> entry : this.userOrder.entrySet()) {
+            int category = Utility.getCategory(entry.getKey(), menu);
+            int price = menu.get(category).get(entry.getKey());
+            totalPrice += price * entry.getValue();
+        }
+        return totalPrice;
     }
 
     public void setOrderDate(int date) {
