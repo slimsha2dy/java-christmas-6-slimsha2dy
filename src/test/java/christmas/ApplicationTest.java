@@ -68,8 +68,9 @@ class ApplicationTest extends NsTest {
                     "<증정 메뉴>" + LINE_SEPARATOR + "샴페인 1개",
                     "주말 할인: -4,046원",
                     "증정 이벤트: -25,000원",
-                    "<총혜택 금액>" + LINE_SEPARATOR + "-29,046원",
-                    "<할인 후 예상 결제 금액>" + LINE_SEPARATOR + "178,954원",
+                    "크리스마스 디데이 할인: -1,000원",
+                    "<총혜택 금액>" + LINE_SEPARATOR + "-30,046원",
+                    "<할인 후 예상 결제 금액>" + LINE_SEPARATOR + "202,954원",
                     "<12월 이벤트 배지>" + LINE_SEPARATOR + "산타"
             );
         });
