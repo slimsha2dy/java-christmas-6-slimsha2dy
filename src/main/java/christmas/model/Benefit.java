@@ -36,6 +36,13 @@ public class Benefit {
         return totalBenefitPrice;
     }
 
+    public int getPresentPrice() {
+        if (this.benefits.containsKey("증정 이벤트")) {
+            return 25000;
+        }
+        return 0;
+    }
+
     private void christmasBenefit() {
         if (orderDate > 25) {
             return;

@@ -27,6 +27,11 @@ public class MainController {
     private void benefitControl(int totalPrice) {
         Benefit benefit = new Benefit(orderMenu.getOrderDate(), orderMenu.getCategoryCount(), totalPrice);
         OutputView.printBenefits(benefit.getBenefits());
+
+        int totalBenefitPrice = benefit.getTotalBenefitPrice();
+        OutputView.printTotalBenefitPrice(totalBenefitPrice);
+        OutputView.printTotalPayment(totalPrice - totalBenefitPrice + benefit.getPresentPrice());
+        OutputView.printEventBadge(totalBenefitPrice);
     }
 
     private void setReadOrder() {
